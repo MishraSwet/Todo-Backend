@@ -13,10 +13,7 @@ const pool = new Pool({
   port: process.env.DB_PORT,
 });
 
-app.use(bodyParser.json());
-app.get('/', (req, res) => {
-  res.json("Working ")
-})
+
 
 app.get('/todos', async (req, res) => {
   const result = await pool.query('SELECT * FROM todos');
