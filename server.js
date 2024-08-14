@@ -8,13 +8,11 @@ app.use(cors)
 
 
 app.get('/todos', async (req, res) => {
-  const result = await pool.query('SELECT * FROM todos');
   res.json(result.rows);
 });
 
 app.post('/todos', async (req, res) => {
   const { task } = req.body;
-  await pool.query('INSERT INTO todos (task) VALUES ($1)', [task]);
   res.status(201).json({ message: 'Todo added ' });
 });
 
